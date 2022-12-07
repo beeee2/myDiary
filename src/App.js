@@ -1,24 +1,91 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes,Route} from 'react-router-dom';
+import React, { useReducer, useRef } from 'react';
+
+//Pages
+import Home from './pages/Home';
+import Edit from './pages/Edit';
+import New from './pages/New';
+import Diary from './pages/Diary';
+
+const reducer = (state, action) => {
+  let newState = [];
+  switch(action.type) {
+    case 'INIT': {
+      return action.data; 
+    }
+    case 'CREATE': {
+      newState = [action.data, ...state];
+      break;
+    }
+    case 'REMOVE': {
+      newState = state.filter((it) => it.id !== action.targetId);
+      break;
+    }
+    case 'EDIT': {
+      newState = state.map((it) => it.id === action.data.id? {...action.data} : it);
+      break;
+    }
+    default: {
+      return state;
+    }
+  }
+  return newState;
+}
+
+export const DiaryStateContext = React.createContext();
 
 function App() {
+  const [data, dispatch] = useReducer(reducer, [])
+
+  const dataId = useRef(0);
+  //CREATE
+  const onCreate = (date, content, emotion) => {
+    dispatch({
+      type: 'CREATE',
+      data: {
+        id: dataId.current,
+        date: new Date(date).getTime(),
+        content,
+        emotion
+      }
+    });
+    dataId.current += 1;
+  }
+  //REMOVE
+  const onRemove = (targetId) => {
+    dispatch({type: "REMOVE", targetId});
+  }
+
+  //EDIT
+  const onEdit = (targetId, date, content, emotion) => {
+    dispatch({
+      type: "EDIT",
+      data: {
+        id: targetId,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      }
+    })
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DiaryStateContext.Provider>
+      <BrowserRouter>
+        <div className="App">
+          <div className="main">
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/new' element={<New />} />
+              <Route path="/edit" element={<Edit />}/>
+              <Route path="/diary/:id" element={<Diary/>}/>
+            </Routes>
+          </div> 
+        </div>
+      </BrowserRouter>
+    </DiaryStateContext.Provider>
   );
 }
 
