@@ -122,3 +122,26 @@ header .head_button_right {
 .main {
   padding: 20px;
 }
+
+/*DiaryList*/
+.DiaryList .menu_wrapper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.DiaryList .menu_wrapper .right_col {
+  flex-grow: 1;
+}
+.DiaryList .menu_wrapper .right_col button {
+  width: 100%;
+  font-size: 16px;
+}
+.DiaryList .ControlMenu {
+  margin-right: 10px;;
+  border: none;
+  border-radius: 4px;
+  background-color: #F7F7F9;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
