@@ -44,6 +44,9 @@ body {
   min-height: 100vh;
   margin: 0px;
 }
+p, textarea, a, input {
+  font-family: 'Pretendard-Regular';
+}
 
 #root {
   background-color: #fff;
@@ -197,4 +200,124 @@ header .head_button_right {
 }
 .DiaryItem .btn_wrapper {
   min-width: 70px;
+}
+
+/*DiaryEditor*/
+.DiaryEditor {
+
+}
+.DiaryEditor section{
+  margin-bottom:40px;
+}
+.DiaryEditor h4{
+  font-size: 20px;
+  font-weight: 500;
+}
+.DiaryEditor .input-date {
+  border: none;
+  border-radius:4px;
+  background-color: #ececec;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+.DiaryEditor  .emotion_list_wrapper {
+  display: grid;
+  gap: 2%;
+  grid-template-columns: repeat(5, auto);
+}
+.DiaryEditor textarea {
+  font-size: 18px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+  padding: 20px;
+  border:none;
+  border-radius: 4px;
+  background-color: #ececec;
+}
+.DiaryEditor textarea:focus {
+  border: none;
+  outline: none;
+}
+.DiaryEditor .control_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/*EmotionItem*/
+.EmotionItem {
+  cursor:pointer;
+  border-radius: 4px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.EmotionItem .icon_box {
+  min-width:100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: #ececec;
+  transition: all .3s;
+}
+.EmotionItem .icon_box i {
+  font-size: 50px;
+  transition: all .3s;
+}
+
+.EmotionItem_on_1 .icon_box_1 {
+  background-color: #264653;
+}
+.EmotionItem .icon_box_1 i {
+  color: #264653;
+}
+.EmotionItem_on_2 .icon_box_2 {
+  background-color: #2a9d8f;
+}
+.EmotionItem .icon_box_2 i {
+  color: #2a9d8f;
+}
+.EmotionItem_on_3 .icon_box_3 {
+  background-color: #e9c46a;
+}
+.EmotionItem .icon_box_3 i {
+  color: #e9c46a;
+}
+.EmotionItem_on_4 .icon_box_4 {
+  background-color: #f4a261;
+}
+.EmotionItem .icon_box_4 i {
+  color: #f4a261;
+}
+.EmotionItem_on_5 .icon_box_5 {
+  background-color: #e76f51;
+}
+.EmotionItem .icon_box_5 i {
+  color: #e76f51;
+}
+.EmotionItem span {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.EmotionItem_on_1 .icon_box i {
+  color: #fff;
+}
+.EmotionItem_on_2 .icon_box i {
+  color: #fff;
+}
+.EmotionItem_on_3 .icon_box i {
+  color: #fff;
+}
+.EmotionItem_on_4 .icon_box i {
+  color: #fff;
+}
+.EmotionItem_on_5 .icon_box i {
+  color: #fff;
 }

@@ -24,11 +24,11 @@ const DiaryItem = ({id, emotion, content, date}) => {
                 onClick={goDetail}
                 className={["emotion_img_wrapper", `emotion_img_wrapper_${emotion}`].join(" ")}>
                 {/* <img src={ env.PUBLIC_URL + `assets/img/emotion${emotion}.png`} /> */}
-                {emotion == 1 ? <i class="fa-regular fa-face-grin-beam"></i> : ""}
-                {emotion == 2 ? <i class="fa-regular fa-face-grin"></i> : ""}
-                {emotion == 3 ? <i class="fa-regular fa-face-meh"></i> : ""}
-                {emotion == 4 ? <i class="fa-regular fa-face-frown-open"></i> : ""}
-                {emotion == 5 ? <i class="fa-regular fa-face-angry"></i> : ""}
+                {emotion == 1 ? <i className="fa-regular fa-face-grin-beam"></i> : ""}
+                {emotion == 2 ? <i className="fa-regular fa-face-grin"></i> : ""}
+                {emotion == 3 ? <i className="fa-regular fa-face-meh"></i> : ""}
+                {emotion == 4 ? <i className="fa-regular fa-face-frown-open"></i> : ""}
+                {emotion == 5 ? <i className="fa-regular fa-face-angry"></i> : ""}
             </div>
             <div
                 onClick={goDetail} 
