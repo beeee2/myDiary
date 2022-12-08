@@ -5,53 +5,9 @@ import {DiaryDispatchContext} from './../App.js';
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
+import { getStringDate } from "../util/data.js";
+import {emotionList} from '../util/emotion.js';
 
-//                 {emotion == 1 ? <i className="fa-regular fa-face-grin-beam"></i> : ""}
-//                 {emotion == 2 ? <i className="fa-regular fa-face-grin"></i> : ""}
-//                 {emotion == 3 ? <i className="fa-regular fa-face-meh"></i> : ""}
-//                 {emotion == 4 ? <i className="fa-regular fa-face-frown-open"></i> : ""}
-//                 {emotion == 5 ? <i className="fa-regular fa-face-angry"></i> : ""}
-
-const emotionList = [
-    {
-        emotion_id: 1,
-        emotion_class: `fa-regular fa-face-grin-beam`,
-        emotion_description:'완전 좋음'
-    },
-    {
-        emotion_id: 2,
-        emotion_class: 'fa-regular fa-face-grin',
-        emotion_description:'좋음'
-    },
-    {
-        emotion_id: 3,
-        emotion_class: "fa-regular fa-face-meh",
-        emotion_description:'보통'
-    },
-    {
-        emotion_id: 4,
-        emotion_class: 'fa-regular fa-face-frown-open',
-        emotion_description:'나쁨'
-    },
-    {
-        emotion_id: 5,
-        emotion_class: 'fa-regular fa-face-angry',
-        emotion_description:'완전 나쁨'
-    }
-]
-
-const getStringDate = (date) => { 
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (day < 10) {
-      day = `0${day}`;
-    }
-    return `${year}-${month}-${day}`;
-}
 
 const DiaryEditor = ({isEdit, originData}) => {
     const contentRef = useRef();
@@ -59,7 +15,7 @@ const DiaryEditor = ({isEdit, originData}) => {
     const [emotion, setEmotion] = useState(3);
     const [date, setDate] = useState(getStringDate(new Date()));
 
-    const {onCreate, onEdit} = useContext(DiaryDispatchContext);
+    const {onCreate, onEdit, onRemove} = useContext(DiaryDispatchContext);
 
     const handleClickEmote = (emotion) => {
         setEmotion(emotion);
@@ -79,9 +35,15 @@ const DiaryEditor = ({isEdit, originData}) => {
             }
         }
 
-        onCreate(date, content, emotion);
         navigate('/', {replace:true})
-    }
+    };
+
+    const handleRemove = () => {
+        if (window.confirm("정말 삭제하시겠습니까?")) {
+            onRemove(originData.id);
+            navigate('/', {replace: true})
+        }
+    };
 
     const navigate = useNavigate();
 
@@ -101,6 +63,13 @@ const DiaryEditor = ({isEdit, originData}) => {
                     <MyButton 
                         text={<i className="fa-solid fa-chevron-left"></i>}
                         onClick={() => navigate(-1)}
+                    />
+                }
+                headRightChild={ isEdit &&
+                    <MyButton 
+                        text={"삭제하기"}
+                        type={"negative"}
+                        onClick={handleRemove}
                     />
                 }
             />

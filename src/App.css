@@ -321,3 +321,58 @@ header .head_button_right {
 .EmotionItem_on_5 .icon_box i {
   color: #fff;
 }
+
+/*DiaryPage*/
+.DiaryPage {}
+.DiaryPage article h4 {
+  font-size: 20px;
+  text-align: center;
+}
+.DiaryPage .emotion_icon {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DiaryPage .emotion_icon i {
+  font-size: 65px;
+  color: #fff;
+}
+.DiaryPage .emotion_icon_1 {
+  background-color: #264653;
+}
+.DiaryPage .emotion_icon_2 {
+  background-color: #2a9d8f;
+}
+.DiaryPage .emotion_icon_3 {
+  background-color: #e9c46a;
+}
+.DiaryPage .emotion_icon_4 {
+  background-color: #f4a261;
+}
+.DiaryPage .emotion_icon_5 {
+  background-color: #e76f51;
+}
+.DiaryPage .diary_icon_wrapper {
+  text-align: center;
+}
+.DiaryPage .diary_icon_wrapper .emotion_description{
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.DiaryPage .diary_content_wrapper {
+  width:100%;
+  border: none;
+  background-color: #ececec;
+  border-radius: 4px;
+}
+.DiaryPage .diary_content_wrapper p {
+  padding: 20px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.5;
+}
